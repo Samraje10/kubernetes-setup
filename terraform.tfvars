@@ -1,0 +1,11 @@
+ubuntu_ami_id        = "ami-0c7632fb77f35db43"
+region               = "ap-south-1"
+worker_instance_type = "t3.medium"
+cp_instance_type     = "t3.medium"
+worker_1             = "worker-1"
+worker_2             = "worker-2"
+control_plane        = "control-plane"
+volume_size          = 20
+volume_type          = "gp3"
+worker_count         = 1
+cp_count             = 1
