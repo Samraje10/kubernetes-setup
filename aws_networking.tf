@@ -64,6 +64,45 @@ resource "aws_security_group" "k8s-sg" {
 
   }
 
+
+  # Calico VXLAN overlay networking
+  ingress {
+    description = "Calico VXLAN"
+    from_port   = 4789
+    to_port     = 4789
+    protocol    = "udp"
+
+    cidr_blocks = [data.aws_vpc.default.cidr_block]
+  }
+
+  # Calico Typha - if deployed by the operator
+  ingress {
+    description = "Calico Typha"
+    from_port   = 5473
+    to_port     = 5473
+    protocol    = "tcp"
+
+    cidr_blocks = [data.aws_vpc.default.cidr_block]
+  }
+
+  # Traefik HTTP NodePort
+  ingress {
+    description = "Traefik HTTP"
+    from_port   = 30080
+    to_port     = 30080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Traefik HTTPS NodePort
+  ingress {
+    description = "Traefik HTTPS"
+    from_port   = 30443
+    to_port     = 30443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   ingress {
     from_port = 1389
     to_port   = 1389

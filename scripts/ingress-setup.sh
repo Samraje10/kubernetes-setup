@@ -16,7 +16,7 @@ helm repo update
 
 helm search repo traefik/traefik
 
-cd /home/ubuntu
+cd /home/ubuntu/k8s
 helm upgrade --install traefik traefik/traefik \
 --namespace klks \
 --values traefik-values.yaml

@@ -1,4 +1,3 @@
-
 #!/bin/bash
 set -euxo pipefail
 
@@ -67,6 +66,7 @@ sudo kubeadm init --apiserver-advertise-address="$MASTER_PRIVATE_IP" --pod-netwo
 
 mkdir -p "$HOME/.kube"
 mkdir -p /home/ubuntu/k8s
+chown ubuntu:ubuntu /home/ubuntu/k8s
 
 sudo cp /etc/kubernetes/admin.conf "$HOME/.kube/config"
 
